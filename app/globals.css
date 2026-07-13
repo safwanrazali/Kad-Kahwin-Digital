@@ -1,0 +1,484 @@
+:root {
+  --ivory: #fdfbf7;
+  --ivory-deep: #f7f1e8;
+  --rosewood: #8b4a5c;
+  --rosewood-deep: #6e3a48;
+  --rosewood-light: #c98a99;
+  --sage: #9caf95;
+  --sage-deep: #7a9172;
+  --gold: #c9a268;
+  --gold-soft: #e4cfa0;
+  --ink: #4a3b3f;
+
+  --font-display: var(--font-playfair);
+  --font-italic: var(--font-cormorant);
+  --font-body: var(--font-poppins);
+  --font-script: var(--font-alex-brush);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Typography helpers ---------- */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-italic {
+  font-family: var(--font-italic);
+  font-style: italic;
+}
+.font-script {
+  font-family: var(--font-script);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  color: var(--rosewood-deep);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+}
+
+/* ---------- Layout sections ---------- */
+.section {
+  position: relative;
+  padding: 5.5rem 1.25rem;
+  overflow: hidden;
+}
+
+.section-alt {
+  background: var(--ivory-deep);
+}
+
+.divider-line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.1rem auto;
+  border-radius: 2px;
+}
+
+/* ---------- Floral corner decorations ---------- */
+.floral-corner {
+  position: absolute;
+  width: clamp(90px, 18vw, 160px);
+  height: auto;
+  opacity: 0.85;
+  color: var(--sage);
+  pointer-events: none;
+  z-index: 0;
+}
+.floral-corner.tl { top: 0; left: 0; transform: scaleX(1); }
+.floral-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
+.floral-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.floral-corner.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(201, 162, 104, 0.16), transparent 55%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-deep) 100%);
+  padding: 3rem 1.25rem;
+}
+
+.hero-invite-to {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink);
+  opacity: 0.85;
+  margin-bottom: 0.4rem;
+}
+
+.hero-names {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 11vw, 5.2rem);
+  color: var(--rosewood);
+  line-height: 1.15;
+  margin: 0.6rem 0;
+}
+
+.hero-ampersand {
+  color: var(--gold);
+  padding: 0 0.15em;
+}
+
+.hero-date {
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  color: var(--rosewood-deep);
+  font-size: clamp(1rem, 2.6vw, 1.3rem);
+  margin-top: 0.75rem;
+}
+
+/* ---------- Monogram (signature element) ---------- */
+.monogram {
+  width: clamp(96px, 22vw, 130px);
+  height: clamp(96px, 22vw, 130px);
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  color: var(--rosewood);
+  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--gold-soft) 140%);
+  box-shadow: 0 6px 24px rgba(139, 74, 92, 0.18);
+  margin-bottom: 1.6rem;
+}
+
+/* ---------- Countdown ---------- */
+.countdown {
+  display: flex;
+  gap: clamp(0.6rem, 2.5vw, 1.5rem);
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.countdown-item {
+  background: #fff;
+  border: 1px solid var(--gold-soft);
+  border-radius: 14px;
+  min-width: 68px;
+  padding: 0.7rem 0.5rem;
+  box-shadow: 0 4px 16px rgba(139, 74, 92, 0.08);
+}
+.countdown-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  color: var(--rosewood);
+  font-weight: 600;
+  display: block;
+}
+.countdown-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+/* ---------- Scroll cue ---------- */
+.scroll-cue {
+  margin-top: 2.8rem;
+  color: var(--rosewood-light);
+  animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ---------- Doa quote ---------- */
+.doa-text {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  color: var(--rosewood-deep);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---------- Couple cards ---------- */
+.couple-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 34px rgba(139, 74, 92, 0.09);
+  height: 100%;
+}
+.couple-photo-frame {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 0 auto 1.2rem;
+  border: 3px solid var(--gold-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ivory-deep);
+  color: var(--sage-deep);
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  overflow: hidden;
+}
+.couple-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.couple-name {
+  font-family: var(--font-display);
+  color: var(--rosewood);
+  font-size: 1.3rem;
+  margin: 0.2rem 0 0.1rem;
+}
+.couple-parents {
+  font-size: 0.88rem;
+  color: var(--ink);
+  opacity: 0.75;
+}
+.couple-heart {
+  color: var(--gold);
+  font-size: 1.6rem;
+  margin: 0 0.5rem;
+}
+
+/* ---------- Event / itinerary ---------- */
+.event-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.3rem 1.8rem;
+  box-shadow: 0 10px 34px rgba(139, 74, 92, 0.09);
+  border-top: 3px solid var(--sage);
+  height: 100%;
+}
+.event-card.gold {
+  border-top-color: var(--gold);
+}
+.event-icon {
+  font-size: 1.8rem;
+  color: var(--rosewood);
+  margin-bottom: 0.7rem;
+}
+.event-title {
+  font-family: var(--font-display);
+  color: var(--rosewood-deep);
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+.event-detail-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.event-detail-row .label {
+  min-width: 78px;
+  color: var(--sage-deep);
+  font-weight: 500;
+}
+
+.btn-romantic {
+  background: var(--rosewood);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.6rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+}
+.btn-romantic:hover {
+  background: var(--rosewood-deep);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 74, 92, 0.28);
+}
+.btn-outline-romantic {
+  background: transparent;
+  border: 1.5px solid var(--rosewood);
+  color: var(--rosewood);
+  padding: 0.55rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+}
+.btn-outline-romantic:hover {
+  background: var(--rosewood);
+  color: #fff;
+}
+
+/* ---------- Gallery ---------- */
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--ivory-deep), var(--gold-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rosewood-light);
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  box-shadow: 0 8px 24px rgba(139, 74, 92, 0.1);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- RSVP form ---------- */
+.rsvp-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: clamp(1.6rem, 5vw, 3rem);
+  box-shadow: 0 16px 48px rgba(139, 74, 92, 0.14);
+  max-width: 620px;
+  margin: 0 auto;
+}
+.form-label-romantic {
+  font-size: 0.85rem;
+  color: var(--rosewood-deep);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.form-control-romantic,
+.form-select-romantic {
+  border: 1px solid var(--gold-soft);
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--font-body);
+  background: var(--ivory);
+}
+.form-control-romantic:focus,
+.form-select-romantic:focus {
+  border-color: var(--rosewood);
+  box-shadow: 0 0 0 3px rgba(139, 74, 92, 0.12);
+  outline: none;
+}
+.attend-toggle {
+  display: flex;
+  gap: 0.8rem;
+}
+.attend-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 14px;
+  border: 1.5px solid var(--gold-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--ivory);
+}
+.attend-option.active {
+  border-color: var(--rosewood);
+  background: var(--rosewood);
+  color: #fff;
+}
+.attend-option input {
+  display: none;
+}
+
+.rsvp-alert {
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.92rem;
+  margin-top: 1rem;
+}
+.rsvp-alert.success {
+  background: #eef4ec;
+  color: var(--sage-deep);
+  border: 1px solid var(--sage);
+}
+.rsvp-alert.error {
+  background: #f8ecec;
+  color: #a14343;
+  border: 1px solid #d99a9a;
+}
+
+/* ---------- Music toggle ---------- */
+.music-toggle {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  z-index: 40;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--rosewood);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(139, 74, 92, 0.35);
+  font-size: 1.25rem;
+}
+.music-toggle.spinning {
+  animation: spin 6s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Footer ---------- */
+.footer-romantic {
+  text-align: center;
+  padding: 3rem 1.25rem 2.2rem;
+  background: var(--rosewood-deep);
+  color: var(--ivory);
+}
+.footer-romantic .hero-names {
+  color: var(--gold-soft);
+  font-size: clamp(2rem, 7vw, 2.8rem);
+}
+.footer-note {
+  font-size: 0.78rem;
+  opacity: 0.65;
+  margin-top: 1.2rem;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
