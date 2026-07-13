@@ -1,14 +1,14 @@
 :root {
-  --ivory: #fdfbf7;
-  --ivory-deep: #f7f1e8;
-  --rosewood: #8b4a5c;
-  --rosewood-deep: #6e3a48;
-  --rosewood-light: #c98a99;
-  --sage: #9caf95;
-  --sage-deep: #7a9172;
-  --gold: #c9a268;
-  --gold-soft: #e4cfa0;
-  --ink: #4a3b3f;
+  --ivory: #fdfdfc;
+  --mist: #eef1f6;
+  --mist-deep: #e2e7f0;
+  --navy: #2c3b5c;
+  --navy-deep: #1c2740;
+  --slate: #5b6f92;
+  --slate-soft: #93a4c2;
+  --slate-mist: #c3cee0;
+  --gold: #93a4c2; /* kept as var name for FloralCorner accent dots, recoloured to slate-blue */
+  --ink: #33405c;
 
   --font-display: var(--font-playfair);
   --font-italic: var(--font-cormorant);
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  background: var(--ivory);
+  background: var(--mist);
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 300;
@@ -55,173 +55,323 @@ body {
 .font-script {
   font-family: var(--font-script);
 }
+.font-arabic {
+  font-family: "Traditional Arabic", "Scheherazade New", "Amiri", serif;
+}
 
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.72rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--slate);
   font-weight: 500;
 }
 
 .section-title {
   font-family: var(--font-display);
-  color: var(--rosewood-deep);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--navy);
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
   font-weight: 600;
+}
+
+/* ---------- Card-frame shell ----------
+   The whole invitation behaves like one fixed-width mobile card,
+   centred on the page. We intentionally do NOT chase full
+   responsiveness here — it mirrors a single card mock, not a fluid site. */
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  background: var(--mist);
+}
+
+.invite-frame {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: var(--ivory);
+  box-shadow: 0 30px 70px rgba(28, 39, 64, 0.16);
+  padding-bottom: 92px; /* room for fixed bottom nav */
 }
 
 /* ---------- Layout sections ---------- */
 .section {
   position: relative;
-  padding: 5.5rem 1.25rem;
+  padding: 3.5rem 1.5rem;
   overflow: hidden;
 }
 
 .section-alt {
-  background: var(--ivory-deep);
+  background: var(--mist);
 }
 
 .divider-line {
-  width: 60px;
+  width: 50px;
   height: 2px;
-  background: var(--gold);
-  margin: 1.1rem auto;
+  background: var(--slate-soft);
+  margin: 1rem auto;
   border-radius: 2px;
 }
 
 /* ---------- Floral corner decorations ---------- */
 .floral-corner {
   position: absolute;
-  width: clamp(90px, 18vw, 160px);
+  width: clamp(80px, 30vw, 140px);
   height: auto;
-  opacity: 0.85;
-  color: var(--sage);
+  opacity: 0.8;
+  color: var(--slate-soft);
   pointer-events: none;
   z-index: 0;
 }
-.floral-corner.tl { top: 0; left: 0; transform: scaleX(1); }
-.floral-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
-.floral-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
-.floral-corner.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+.floral-corner.tl {
+  top: 0;
+  left: 0;
+  transform: scaleX(1);
+}
+.floral-corner.tr {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+}
+.floral-corner.bl {
+  bottom: 0;
+  left: 0;
+  transform: scaleY(-1);
+}
+.floral-corner.br {
+  bottom: 0;
+  right: 0;
+  transform: scale(-1, -1);
+}
 
 .section > .container {
   position: relative;
   z-index: 1;
+  max-width: 100%;
+  padding: 0;
+}
+
+/* ---------- Music pill (top of hero) ---------- */
+.music-pill-row {
+  display: flex;
+  justify-content: center;
+  padding: 0.9rem 1rem 0;
+  position: relative;
+  z-index: 2;
+}
+.music-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--mist-deep);
+  border-radius: 30px;
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(6px);
+}
+.music-pill .note {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.8rem;
+}
+.music-pill .note.spinning {
+  animation: spin 5s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100svh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   background:
-    radial-gradient(circle at 50% 15%, rgba(201, 162, 104, 0.16), transparent 55%),
-    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-deep) 100%);
-  padding: 3rem 1.25rem;
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(147, 164, 194, 0.22),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--ivory) 0%, var(--mist) 100%);
+  padding: 1.5rem 1.5rem 3rem;
 }
 
 .hero-invite-to {
   font-family: var(--font-italic);
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--ink);
   opacity: 0.85;
   margin-bottom: 0.4rem;
 }
 
-.hero-names {
-  font-family: var(--font-script);
-  font-size: clamp(2.8rem, 11vw, 5.2rem);
-  color: var(--rosewood);
-  line-height: 1.15;
-  margin: 0.6rem 0;
-}
-
-.hero-ampersand {
-  color: var(--gold);
-  padding: 0 0.15em;
-}
-
-.hero-date {
-  font-family: var(--font-display);
-  letter-spacing: 0.12em;
-  color: var(--rosewood-deep);
-  font-size: clamp(1rem, 2.6vw, 1.3rem);
-  margin-top: 0.75rem;
-}
-
-/* ---------- Monogram (signature element) ---------- */
-.monogram {
-  width: clamp(96px, 22vw, 130px);
-  height: clamp(96px, 22vw, 130px);
-  border-radius: 50%;
-  border: 1.5px solid var(--gold);
-  outline: 1px solid var(--gold);
-  outline-offset: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-script);
-  font-size: clamp(1.6rem, 5vw, 2.3rem);
-  color: var(--rosewood);
-  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--gold-soft) 140%);
-  box-shadow: 0 6px 24px rgba(139, 74, 92, 0.18);
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--navy);
   margin-bottom: 1.6rem;
 }
 
-/* ---------- Countdown ---------- */
-.countdown {
+.hero-names-stack {
   display: flex;
-  gap: clamp(0.6rem, 2.5vw, 1.5rem);
-  justify-content: center;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  margin: 0.4rem 0 1.8rem;
 }
-.countdown-item {
-  background: #fff;
-  border: 1px solid var(--gold-soft);
-  border-radius: 14px;
-  min-width: 68px;
-  padding: 0.7rem 0.5rem;
-  box-shadow: 0 4px 16px rgba(139, 74, 92, 0.08);
+.hero-names-stack .name {
+  font-family: var(--font-script);
+  font-size: clamp(2.6rem, 13vw, 3.4rem);
+  color: var(--navy);
+  line-height: 1.05;
 }
-.countdown-number {
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 4vw, 1.9rem);
-  color: var(--rosewood);
-  font-weight: 600;
-  display: block;
-}
-.countdown-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--sage-deep);
+.hero-names-stack .amp {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--slate);
+  font-size: 1.4rem;
+  margin: 0.2rem 0;
 }
 
-/* ---------- Scroll cue ---------- */
-.scroll-cue {
-  margin-top: 2.8rem;
-  color: var(--rosewood-light);
-  animation: bob 2.4s ease-in-out infinite;
+.hero-date-block {
+  font-family: var(--font-display);
+  color: var(--navy);
 }
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+.hero-date-block .day {
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+}
+.hero-date-block .full-date {
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Formal invitation card ---------- */
+.invite-letter {
+  text-align: center;
+  padding: 0.5rem 0.5rem 1rem;
+}
+.bismillah {
+  font-size: clamp(1.8rem, 9vw, 2.4rem);
+  color: var(--navy);
+  margin-bottom: 1.4rem;
+  line-height: 1.6;
+}
+.invite-greeting {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--slate);
+  margin-bottom: 0.6rem;
+}
+.invite-hosts {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+.invite-hosts .amp {
+  display: block;
+  color: var(--slate-soft);
+  font-size: 0.85rem;
+  margin: 0.15rem 0;
+}
+.invite-body-text {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  max-width: 360px;
+  margin: 0 auto 1.6rem;
+}
+.invite-couple {
+  font-family: var(--font-script);
+  color: var(--navy);
+  font-size: clamp(1.5rem, 7vw, 1.9rem);
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+}
+.invite-couple .amp {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--slate);
+  font-size: 1rem;
+  display: block;
+}
+
+.invite-detail-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+}
+.invite-detail-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.invite-detail-row .value {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.invite-detail-row .value.address {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.invite-more-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--slate-soft);
+  color: var(--navy);
+  margin-top: 0.4rem;
 }
 
 /* ---------- Doa quote ---------- */
 .doa-text {
   font-family: var(--font-italic);
   font-style: italic;
-  font-size: clamp(1.15rem, 3vw, 1.5rem);
-  color: var(--rosewood-deep);
-  max-width: 620px;
+  font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+  color: var(--navy);
+  max-width: 100%;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -230,24 +380,23 @@ body {
 .couple-card {
   background: #fff;
   border-radius: 20px;
-  padding: 2.2rem 1.5rem;
+  padding: 2rem 1.4rem;
   text-align: center;
-  box-shadow: 0 10px 34px rgba(139, 74, 92, 0.09);
-  height: 100%;
+  box-shadow: 0 10px 30px rgba(44, 59, 92, 0.08);
 }
 .couple-photo-frame {
-  width: 130px;
-  height: 130px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  margin: 0 auto 1.2rem;
-  border: 3px solid var(--gold-soft);
+  margin: 0 auto 1.1rem;
+  border: 3px solid var(--mist-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ivory-deep);
-  color: var(--sage-deep);
+  background: var(--mist);
+  color: var(--slate);
   font-family: var(--font-script);
-  font-size: 2.2rem;
+  font-size: 2rem;
   overflow: hidden;
 }
 .couple-photo-frame img {
@@ -257,155 +406,159 @@ body {
 }
 .couple-name {
   font-family: var(--font-display);
-  color: var(--rosewood);
-  font-size: 1.3rem;
+  color: var(--navy);
+  font-size: 1.15rem;
   margin: 0.2rem 0 0.1rem;
 }
 .couple-parents {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--ink);
   opacity: 0.75;
 }
 .couple-heart {
-  color: var(--gold);
-  font-size: 1.6rem;
-  margin: 0 0.5rem;
+  color: var(--slate-soft);
+  font-size: 1.4rem;
+  margin: 0.6rem 0;
+  display: block;
+  text-align: center;
 }
 
 /* ---------- Event / itinerary ---------- */
 .event-card {
   background: #fff;
   border-radius: 20px;
-  padding: 2.3rem 1.8rem;
-  box-shadow: 0 10px 34px rgba(139, 74, 92, 0.09);
-  border-top: 3px solid var(--sage);
-  height: 100%;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(44, 59, 92, 0.08);
+  border-top: 3px solid var(--slate-soft);
 }
 .event-card.gold {
-  border-top-color: var(--gold);
+  border-top-color: var(--navy);
 }
 .event-icon {
-  font-size: 1.8rem;
-  color: var(--rosewood);
-  margin-bottom: 0.7rem;
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
 }
 .event-title {
   font-family: var(--font-display);
-  color: var(--rosewood-deep);
-  font-size: 1.35rem;
+  color: var(--navy);
+  font-size: 1.2rem;
   margin-bottom: 0.6rem;
 }
 .event-detail-row {
   display: flex;
   gap: 0.6rem;
   margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 .event-detail-row .label {
-  min-width: 78px;
-  color: var(--sage-deep);
+  min-width: 72px;
+  color: var(--slate);
   font-weight: 500;
 }
 
 .btn-romantic {
-  background: var(--rosewood);
+  background: var(--navy);
   border: none;
   color: #fff;
   padding: 0.6rem 1.6rem;
   border-radius: 30px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
   transition: all 0.25s ease;
 }
 .btn-romantic:hover {
-  background: var(--rosewood-deep);
+  background: var(--navy-deep);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 74, 92, 0.28);
+  box-shadow: 0 8px 20px rgba(44, 59, 92, 0.28);
 }
 .btn-outline-romantic {
   background: transparent;
-  border: 1.5px solid var(--rosewood);
-  color: var(--rosewood);
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
   padding: 0.55rem 1.5rem;
   border-radius: 30px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
   transition: all 0.25s ease;
 }
 .btn-outline-romantic:hover {
-  background: var(--rosewood);
+  background: var(--navy);
   color: #fff;
 }
 
 /* ---------- Gallery ---------- */
 .gallery-item {
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: linear-gradient(135deg, var(--ivory-deep), var(--gold-soft));
+  background: linear-gradient(135deg, var(--mist), var(--mist-deep));
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--rosewood-light);
+  color: var(--slate-soft);
   font-family: var(--font-script);
-  font-size: 1.2rem;
-  box-shadow: 0 8px 24px rgba(139, 74, 92, 0.1);
+  font-size: 1.1rem;
+  box-shadow: 0 8px 20px rgba(44, 59, 92, 0.08);
 }
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
 
 /* ---------- RSVP form ---------- */
 .rsvp-card {
   background: #fff;
-  border-radius: 24px;
-  padding: clamp(1.6rem, 5vw, 3rem);
-  box-shadow: 0 16px 48px rgba(139, 74, 92, 0.14);
-  max-width: 620px;
-  margin: 0 auto;
+  border-radius: 22px;
+  padding: 1.6rem;
+  box-shadow: 0 16px 40px rgba(44, 59, 92, 0.12);
 }
 .form-label-romantic {
-  font-size: 0.85rem;
-  color: var(--rosewood-deep);
+  font-size: 0.82rem;
+  color: var(--navy);
   font-weight: 500;
   margin-bottom: 0.4rem;
 }
 .form-control-romantic,
 .form-select-romantic {
-  border: 1px solid var(--gold-soft);
+  border: 1px solid var(--mist-deep);
   border-radius: 12px;
-  padding: 0.65rem 0.9rem;
+  padding: 0.6rem 0.85rem;
   font-family: var(--font-body);
   background: var(--ivory);
 }
 .form-control-romantic:focus,
 .form-select-romantic:focus {
-  border-color: var(--rosewood);
-  box-shadow: 0 0 0 3px rgba(139, 74, 92, 0.12);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(44, 59, 92, 0.12);
   outline: none;
 }
 .attend-toggle {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 .attend-option {
   flex: 1;
   text-align: center;
-  padding: 0.75rem 0.5rem;
+  padding: 0.7rem 0.4rem;
   border-radius: 14px;
-  border: 1.5px solid var(--gold-soft);
+  border: 1.5px solid var(--mist-deep);
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--ink);
   background: var(--ivory);
 }
 .attend-option.active {
-  border-color: var(--rosewood);
-  background: var(--rosewood);
+  border-color: var(--navy);
+  background: var(--navy);
   color: #fff;
 }
 .attend-option input {
@@ -414,14 +567,14 @@ body {
 
 .rsvp-alert {
   border-radius: 14px;
-  padding: 0.9rem 1.1rem;
-  font-size: 0.92rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
   margin-top: 1rem;
 }
 .rsvp-alert.success {
-  background: #eef4ec;
-  color: var(--sage-deep);
-  border: 1px solid var(--sage);
+  background: #eaf0e8;
+  color: #4d6b45;
+  border: 1px solid #b9cdb2;
 }
 .rsvp-alert.error {
   background: #f8ecec;
@@ -429,54 +582,72 @@ body {
   border: 1px solid #d99a9a;
 }
 
-/* ---------- Music toggle ---------- */
-.music-toggle {
+/* ---------- Bottom navigation ---------- */
+.bottom-nav {
   position: fixed;
-  bottom: 1.4rem;
-  right: 1.4rem;
-  z-index: 40;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--rosewood);
-  color: #fff;
-  border: none;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--navy);
+  z-index: 50;
+  box-shadow: 0 -8px 24px rgba(28, 39, 64, 0.25);
+}
+.bottom-nav-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 22px rgba(139, 74, 92, 0.35);
-  font-size: 1.25rem;
+  gap: 0.25rem;
+  padding: 0.7rem 0.3rem 0.6rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
 }
-.music-toggle.spinning {
-  animation: spin 6s linear infinite;
+.bottom-nav-item:last-child {
+  border-right: none;
 }
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bottom-nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.bottom-nav-item svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* ---------- Footer ---------- */
 .footer-romantic {
   text-align: center;
-  padding: 3rem 1.25rem 2.2rem;
-  background: var(--rosewood-deep);
+  padding: 3rem 1.5rem 2rem;
+  background: var(--navy-deep);
   color: var(--ivory);
 }
-.footer-romantic .hero-names {
-  color: var(--gold-soft);
-  font-size: clamp(2rem, 7vw, 2.8rem);
+.footer-romantic .hero-names-stack .name {
+  color: var(--slate-soft);
+  font-size: clamp(2rem, 10vw, 2.4rem);
 }
 .footer-note {
-  font-size: 0.78rem;
-  opacity: 0.65;
+  font-size: 0.74rem;
+  opacity: 0.6;
   margin-top: 1.2rem;
 }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 .reveal.is-visible {
   opacity: 1;
