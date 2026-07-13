@@ -1,4 +1,4 @@
-import { Playfair_Display, Cormorant_Garamond, Poppins, Alex_Brush } from "next/font/google";
+import { Playfair_Display, Cormorant_Garamond, Poppins, Mrs_Saint_Delafield } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 
@@ -21,10 +21,10 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-const alexBrush = Alex_Brush({
+const scriptFont = Mrs_Saint_Delafield({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-alex-brush",
+  variable: "--font-script-face",
 });
 
 export const metadata = {
@@ -42,14 +42,14 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#8b4a5c",
+  themeColor: "#2c3b5c",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ms">
       <body
-        className={`${playfair.variable} ${cormorant.variable} ${poppins.variable} ${alexBrush.variable}`}
+        className={`${playfair.variable} ${cormorant.variable} ${poppins.variable} ${scriptFont.variable}`}
       >
         {children}
       </body>

@@ -4,6 +4,7 @@ import MusicToggle from "@/components/MusicToggle";
 import BottomNav from "@/components/BottomNav";
 import Reveal from "@/components/Reveal";
 import FloralCorner from "@/components/FloralCorner";
+import FloralArt from "@/components/FloralArt";
 
 // =========================================================
 // EDIT MAKLUMAT MAJLIS DI SINI
@@ -83,28 +84,33 @@ export default async function Home({ searchParams }) {
         <main>
           {/* ---------------- HERO ---------------- */}
           <section className="hero">
-            {guestName && (
-              <p className="hero-invite-to">
-                Kepada Yang Dihormati,
-                <br />
-                <strong>{guestName}</strong>
-              </p>
-            )}
+            <FloralArt variant="top" />
+            <FloralArt variant="bottom" />
 
-            <div className="hero-eyebrow">Walimatulurus</div>
+            <div className="hero-content">
+              {guestName && (
+                <p className="hero-invite-to">
+                  Kepada Yang Dihormati,
+                  <br />
+                  <strong>{guestName}</strong>
+                </p>
+              )}
 
-            <div className="hero-names-stack">
-              <span className="name">{WEDDING.bride}</span>
-              <span className="amp">&amp;</span>
-              <span className="name">{WEDDING.groom}</span>
+              <div className="hero-eyebrow">Walimatulurus</div>
+
+              <div className="hero-names-stack">
+                <span className="name">{WEDDING.bride}</span>
+                <span className="amp">&amp;</span>
+                <span className="name">{WEDDING.groom}</span>
+              </div>
+
+              <div className="hero-date-block">
+                <span className="day">{WEDDING.resepsiDay}</span>
+                <span className="full-date">{WEDDING.resepsiDateDisplay}</span>
+              </div>
+
+              <Countdown targetDate={WEDDING.resepsiDate} />
             </div>
-
-            <div className="hero-date-block">
-              <span className="day">{WEDDING.resepsiDay}</span>
-              <span className="full-date">{WEDDING.resepsiDateDisplay}</span>
-            </div>
-
-            <Countdown targetDate={WEDDING.resepsiDate} />
           </section>
 
           {/* ---------------- FORMAL INVITATION LETTER ---------------- */}
