@@ -153,37 +153,49 @@ body {
   padding: 0;
 }
 
-/* ---------- Music pill (top of hero) ---------- */
+/* ---------- Music toggle (sticky icon) ---------- */
 .music-pill-row {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
   display: flex;
-  justify-content: center;
-  padding: 0.9rem 1rem 0;
-  position: relative;
-  z-index: 2;
+  justify-content: flex-end;
+  padding: 0 1.1rem;
+  z-index: 60;
+  pointer-events: none; /* row cuma untuk positioning, tak halang klik teks bawah */
 }
 .music-pill {
-  display: inline-flex;
+  pointer-events: auto;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--mist-deep);
-  border-radius: 30px;
-  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
-  font-size: 0.78rem;
-  color: var(--navy);
-  letter-spacing: 0.02em;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(44, 59, 92, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
   backdrop-filter: blur(6px);
+  box-shadow: 0 6px 16px rgba(28, 39, 64, 0.25);
+  font-size: 1.05rem;
+  opacity: 0.82;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.music-pill:hover,
+.music-pill:focus-visible {
+  opacity: 1;
+  transform: scale(1.06);
 }
 .music-pill .note {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--navy);
-  color: #fff;
-  font-size: 0.8rem;
+  font-size: 1.05rem;
 }
 .music-pill .note.spinning {
   animation: spin 5s linear infinite;
@@ -200,7 +212,7 @@ body {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,6 +259,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
+  padding: 5rem 0;
 }
 
 /* ---------- Floral art (procedural, original) ---------- */
@@ -280,12 +293,12 @@ body {
 }
 
 .hero-eyebrow {
-  font-family: var(--font-body);
+  font-family: var(--font-noticia-text);
   font-size: 0.85rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--navy);
-  margin-bottom: 1.6rem;
+  margin-bottom: 5rem;
 }
 
 .hero-names-stack {
@@ -293,11 +306,11 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  margin: 0.4rem 0 1.8rem;
+  margin: 1rem 0 4rem;
 }
 .hero-names-stack .name {
   font-family: var(--font-lavishly-yours);
-  font-size: clamp(2.6rem, 13vw, 3.4rem);
+  font-size: clamp(5rem, 13vw, 3.4rem);
   color: var(--navy);
   line-height: 1.05;
 }
@@ -310,18 +323,20 @@ body {
 }
 
 .hero-date-block {
-  font-family: var(--font-display);
+  font-family: var(--font-noticia-text);
   color: var(--navy);
 }
 .hero-date-block .day {
   display: block;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   letter-spacing: 0.1em;
+  font-weight: 700;
 }
 .hero-date-block .full-date {
   display: block;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-top: 0.15rem;
+  font-weight: 700;
 }
 
 /* ---------- Formal invitation card ---------- */
@@ -707,4 +722,67 @@ body {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- countdown ---------- */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+
+.countdown-item {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(44, 59, 92, 0.08);
+  border: 1px solid var(--mist-deep);
+  transition: all 0.3s ease;
+  border-top: 3px solid var(--slate-soft);
+}
+
+.countdown-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(44, 59, 92, 0.12);
+}
+
+.countdown-number {
+  display: block;
+  font-family: var(--font-rouge-script);
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.countdown-label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--slate);
+  font-weight: 700;
+  font-family: var(--font-noticia-text);
+}
+
+@media (max-width: 480px) {
+  .countdown {
+    gap: 0.5rem;
+  }
+
+  .countdown-item {
+    padding: 0.8rem 0.5rem;
+  }
+
+  .countdown-number {
+    font-size: 1.6rem;
+  }
+
+  .countdown-label {
+    font-size: 0.65rem;
+  }
 }

@@ -2,9 +2,7 @@
 
 import { useRef, useState } from "react";
 
-// Placeholder music control. Letak fail lagu sebenar di /public/music/kompang.mp3
-// (atau tukar `src` di bawah) — butang ini akan berfungsi terus selepas itu.
-export default function MusicToggle({ src = "/music/kompang.mp3", label = "Kompang Dipalu" }) {
+export default function MusicToggle({ src = "/music/music 1.mp3", label = "Kompang Dipalu" }) {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
@@ -14,9 +12,7 @@ export default function MusicToggle({ src = "/music/kompang.mp3", label = "Kompa
     if (playing) {
       audio.pause();
     } else {
-      audio.play().catch(() => {
-        // Fail belum ada / autoplay disekat — senyap sahaja, boleh cuba tekan lagi.
-      });
+      audio.play().catch(() => {});
     }
     setPlaying(!playing);
   };
@@ -28,11 +24,9 @@ export default function MusicToggle({ src = "/music/kompang.mp3", label = "Kompa
         type="button"
         className="music-pill"
         onClick={toggle}
-        aria-label={playing ? "Jeda muzik latar" : "Main muzik latar"}
+        aria-label={playing ? `Jeda ${label}` : `Main ${label}`}
         title={playing ? "Jeda muzik" : "Main muzik"}
       >
-        <span aria-hidden="true">&#8226;&#8226;&#8226;</span>
-        <span>{label}</span>
         <span className={`note ${playing ? "spinning" : ""}`} aria-hidden="true">
           {playing ? "♫" : "♪"}
         </span>

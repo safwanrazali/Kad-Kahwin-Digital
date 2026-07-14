@@ -88,19 +88,19 @@ export default async function Home({ searchParams }) {
             <FloralArt variant="bottom" />
 
             <div className="hero-content">
-              {guestName && (
+              {/* {guestName && (
                 <p className="hero-invite-to">
                   Kepada Yang Dihormati,
                   <br />
                   <strong>{guestName}</strong>
                 </p>
-              )}
+              )} */}
 
               <div className="hero-eyebrow">Walimatulurus</div>
 
               <div className="hero-names-stack">
                 <span className="name">{WEDDING.bride}</span>
-                <span className="amp">&amp;</span>
+                <span className="name">&amp;</span>
                 <span className="name">{WEDDING.groom}</span>
               </div>
 
