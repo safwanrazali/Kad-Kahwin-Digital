@@ -1,3 +1,4 @@
+import IntroGate from "@/components/IntroGate";
 import Countdown from "@/components/Countdown";
 import RsvpForm from "@/components/RsvpForm";
 import MusicToggle from "@/components/MusicToggle";
@@ -80,6 +81,7 @@ export default async function Home({ searchParams }) {
     <div className="site-shell">
       <div className="invite-frame">
         <MusicToggle />
+        <IntroGate brideName={WEDDING.bride} groomName={WEDDING.groom} />
 
         <main>
           {/* ---------------- HERO ---------------- */}

@@ -786,3 +786,35 @@ body {
     font-size: 0.65rem;
   }
 }
+
+/* ---------- Intro gate ---------- */
+.intro-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  padding: 1.5rem;
+  height: 100vh;
+}
+.intro-gate-inner {
+  text-align: center;
+  color: var(--ivory);
+}
+.intro-gate-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+.intro-gate-names {
+  font-family: var(--font-lavishly-yours);
+  font-size: clamp(2.4rem, 12vw, 3.2rem);
+  margin-bottom: 2.5rem;
+}
+.intro-gate-btn {
+  padding: 0.75rem 2.2rem;
+}

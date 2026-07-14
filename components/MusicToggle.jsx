@@ -9,42 +9,31 @@ export default function MusicToggle({ src = "/music/music 1.mp3", label = "Kompa
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = 0.5; // 50%
+    audio.volume = 0.10;
 
-    // Ikon sentiasa ikut status SEBENAR audio, tak kira macam mana ia start
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
 
-    let cleanupFallback = () => {};
+    const startFromGate = () => {
+      audio.play().catch(() => {});
+    };
+    window.addEventListener("start-music", startFromGate);
 
-    audio.play().catch(() => {
-      // Autoplay disekat browser — main automatik pada interaksi pertama
-      const resume = () => {
-        audio.play().catch(() => {});
-      };
-      window.addEventListener("pointerdown", resume, { once: true });
-      window.addEventListener("touchstart", resume, { once: true });
-      window.addEventListener("scroll", resume, { once: true });
-      cleanupFallback = () => {
-        window.removeEventListener("pointerdown", resume);
-        window.removeEventListener("touchstart", resume);
-        window.removeEventListener("scroll", resume);
-      };
-    });
+    // cuba juga autoplay senyap-senyap kalau browser benarkan (desktop kadang boleh)
+    audio.play().catch(() => {});
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
-      cleanupFallback();
+      window.removeEventListener("start-music", startFromGate);
     };
   }, []);
 
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    // Semak status SEBENAR audio, bukan state React
     if (audio.paused) {
       audio.play().catch(() => {});
     } else {
