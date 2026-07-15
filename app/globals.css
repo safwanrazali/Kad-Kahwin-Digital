@@ -85,7 +85,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 0;
-  background: var(--mist);
+  background: var(--primary-soft);
 }
 
 .invite-frame {
@@ -176,7 +176,7 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(44, 59, 92, 0.82);
+  background: var(--primary-dark);
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: #fff;
   backdrop-filter: blur(6px);
@@ -413,8 +413,8 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1.5px solid var(--slate-soft);
-  color: var(--primary);
+  border: 1.5px solid var(--primary-dark);
+  color: var(--primary-dark);
   /* margin-top: 0.4rem; */
 }
 
@@ -794,13 +794,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(28, 39, 64, 0.82) 0%,
-      rgba(28, 39, 64, 0.9) 100%
-    ),
-    url("/gallery/floral.png");
+  background-image: url("/gallery/background1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -809,7 +803,7 @@ body {
 
 .intro-gate-inner {
   text-align: center;
-  color: var(--ivory);
+  color: var(--primary-dark);
 }
 .intro-gate-eyebrow {
   font-size: 0.75rem;
