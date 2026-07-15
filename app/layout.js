@@ -1,4 +1,4 @@
-import { Playfair_Display, Cormorant_Garamond, Poppins, Mrs_Saint_Delafield, Lavishly_Yours, Noticia_Text, Rouge_Script } from "next/font/google";
+import { Playfair_Display, Cormorant_Garamond, Poppins, Mrs_Saint_Delafield, Lavishly_Yours, Noticia_Text, Rouge_Script, Noto_Nastaliq_Urdu, Kalam } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 
@@ -45,6 +45,18 @@ const rougeScript = Rouge_Script({
   variable: "--font-rouge-script",
 });
 
+const notoNastaliqUrdu = Noto_Nastaliq_Urdu({
+  subsets: ["latin", "arabic"],
+  weight: ["400"],
+  variable: "--font-noto-nastaliq-urdu",
+});
+
+const kalam = Kalam({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-kalam",
+});
+
 export const metadata = {
   title: "Sumayyah & Afnan | Kad Kahwin Digital",
   description:
@@ -67,7 +79,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ms">
       <body
-        className={`${playfair.variable} ${cormorant.variable} ${poppins.variable} ${scriptFont.variable} ${lavishlyYours.variable} ${noticiaText.variable} ${rougeScript.variable}`}
+        className={`${playfair.variable} ${cormorant.variable} ${poppins.variable} ${scriptFont.variable} ${lavishlyYours.variable} ${noticiaText.variable} ${rougeScript.variable} ${notoNastaliqUrdu.variable} ${kalam.variable}`}
       >
         {children}
       </body>

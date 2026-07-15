@@ -26,10 +26,10 @@ const WEDDING = {
 
   contactPhone: "+60123456789",
 
-  akadDate: "2026-11-14T09:00:00",
-  akadDateDisplay: "14 November 2026 (Sabtu)",
-  akadTime: "9:00 pagi",
-  akadVenue: "Surau Al-Falah, Kota Bharu, Kelantan",
+  akadDate: "2026-10-03T12:00:00",
+  akadDateDisplay: "3 Oktober 2026 (Sabtu)",
+  akadTime: "12:00 tengah hari - 1:00 petang",
+  akadVenue: "Capredoca White Palace, Bangi",
   resepsiDate: "2026-10-03T12:00:00",
   resepsiDay: "Sabtu",
   resepsiDateDisplay: "3 Oktober 2026",

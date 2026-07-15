@@ -56,7 +56,7 @@ body {
   font-family: var(--font-script);
 }
 .font-arabic {
-  font-family: "Traditional Arabic", "Scheherazade New", "Amiri", serif;
+  font-family: var(--font-noto-nastaliq-urdu);
 }
 
 .eyebrow {
@@ -347,11 +347,12 @@ body {
 .bismillah {
   font-size: clamp(1.8rem, 9vw, 2.4rem);
   color: var(--navy);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 .invite-greeting {
-  font-size: 0.78rem;
+  font-family: var(--font-kalam);
+  font-size: 1.2rem;
   letter-spacing: 0.15em;
   color: var(--slate);
   margin-bottom: 0.6rem;
