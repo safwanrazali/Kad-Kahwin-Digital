@@ -30,14 +30,14 @@ const WEDDING = {
   akadDateDisplay: "14 November 2026 (Sabtu)",
   akadTime: "9:00 pagi",
   akadVenue: "Surau Al-Falah, Kota Bharu, Kelantan",
-  resepsiDate: "2026-11-14T12:00:00",
+  resepsiDate: "2026-10-03T12:00:00",
   resepsiDay: "Sabtu",
-  resepsiDateDisplay: "14 November 2026",
+  resepsiDateDisplay: "3 Oktober 2026",
   resepsiTime: "12:00 tengah hari - 4:00 petang",
-  resepsiVenue: "Dewan Serbaguna Taman Bahagia, Kota Bharu, Kelantan",
-  mapsUrl: "https://maps.google.com/?q=Kota+Bharu+Kelantan",
+  resepsiVenue: "Capredoca White Palace, Bangi",
+  mapsUrl: "https://maps.google.com/?q=Capredoca+White+Palace+Bangi",
   mapsEmbed:
-    "https://maps.google.com/maps?q=Kota+Bharu+Kelantan&t=&z=13&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=2.9193584,101.7526136&z=17&output=embed",
 };
 
 function buildCalendarLink({ title, start, end, location, details }) {
