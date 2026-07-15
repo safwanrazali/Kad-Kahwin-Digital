@@ -4,8 +4,6 @@ import FloralArt from "@/components/FloralArt";
 export default function Hero({ wedding }) {
   return (
     <section className="hero">
-      <FloralArt variant="top" />
-      <FloralArt variant="bottom" />
 
       <div className="hero-content">
         <div className="hero-eyebrow">Walimatulurus</div>

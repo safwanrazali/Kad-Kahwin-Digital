@@ -4,8 +4,7 @@ import FloralCorner from "@/components/FloralCorner";
 export default function InviteLetter({ wedding }) {
   return (
     <section className="section">
-      <FloralCorner position="tl" />
-      <FloralCorner position="tr" />
+      
       <div className="container">
         <Reveal>
           <div className="invite-letter">

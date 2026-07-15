@@ -38,7 +38,7 @@ export default async function Home({ searchParams }) {
           <Couple wedding={wedding} />
           <EventDetails wedding={wedding} />
           <LocationSection wedding={wedding} />
-          <GallerySection />
+          {/* <GallerySection /> */}
           <RsvpSection wedding={wedding} guestName={guestName} />
           <FooterSection wedding={wedding} />
         </main>

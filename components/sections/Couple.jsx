@@ -18,9 +18,10 @@ export default function Couple({ wedding }) {
           </div>
         </Reveal>
 
-        <span className="couple-heart">&#10084;</span>
+        <div className="couple-ring">
+          <img src="/gallery/weddingring.png" alt="wedding ring" width={70}/>
+        </div>
 
-        
         <Reveal>
           <div className="couple-card mb-3">
             <div className="couple-photo-frame">{wedding.groom.charAt(0)}</div>
