@@ -4,7 +4,6 @@ import FloralCorner from "@/components/FloralCorner";
 export default function EventDetails({ wedding }) {
   return (
     <section className="section section-alt" id="atur-cara">
-      <FloralCorner position="bl" />
       <div className="container">
         <Reveal className="text-center mb-4">
           <div className="eyebrow">Atur Cara Majlis</div>

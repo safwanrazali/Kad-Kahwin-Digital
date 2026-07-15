@@ -5,7 +5,6 @@ import RsvpForm from "@/components/RsvpForm";
 export default function RsvpSection({ wedding, guestName }) {
   return (
     <section className="section" id="rsvp">
-      <FloralCorner position="br" />
       <div className="container">
         <Reveal className="text-center mb-4">
           <div className="eyebrow">RSVP</div>
