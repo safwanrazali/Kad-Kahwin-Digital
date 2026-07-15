@@ -60,7 +60,7 @@ body {
 }
 
 .eyebrow {
-  font-family: var(--font-body);
+  font-family: var(--font-noticia-text);
   font-size: 0.72rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -69,7 +69,7 @@ body {
 }
 
 .section-title {
-  font-family: var(--font-display);
+  font-family: var(--font-noticia-text);
   color: var(--navy);
   font-size: clamp(1.6rem, 6vw, 2.2rem);
   font-weight: 600;
@@ -358,18 +358,20 @@ body {
   margin-bottom: 0.6rem;
 }
 .invite-hosts {
-  font-family: var(--font-display);
+  font-family: var(--font-kalam);
   color: var(--navy);
   font-size: 1.05rem;
   margin-bottom: 1rem;
 }
 .invite-hosts .amp {
+  font-family: var(--font-kalam);
   display: block;
   color: var(--slate-soft);
   font-size: 0.85rem;
   margin: 0.15rem 0;
 }
 .invite-body-text {
+  font-family: var(--font-kalam);
   font-size: 0.82rem;
   line-height: 1.9;
   letter-spacing: 0.02em;
@@ -378,14 +380,14 @@ body {
   margin: 0 auto 1.6rem;
 }
 .invite-couple {
-  font-family: var(--font-script);
+  font-family: var(--font-rouge-script);
   color: var(--navy);
   font-size: clamp(1.5rem, 7vw, 1.9rem);
   line-height: 1.5;
   margin-bottom: 1.8rem;
 }
 .invite-couple .amp {
-  font-family: var(--font-italic);
+  font-family: var(--font-rouge-script);
   font-style: italic;
   color: var(--slate);
   font-size: 1rem;
@@ -410,14 +412,14 @@ body {
   justify-content: center;
 }
 .invite-detail-row .value {
-  font-family: var(--font-display);
+  font-family: var(--font-kalam);
   color: var(--navy);
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   text-align: center;
 }
 .invite-detail-row .value.address {
-  font-family: var(--font-body);
+  font-family: var(--font-kalam);
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   max-width: 300px;
@@ -438,7 +440,7 @@ body {
 
 /* ---------- Doa quote ---------- */
 .doa-text {
-  font-family: var(--font-italic);
+  font-family: var(--font-kalam);
   font-style: italic;
   font-size: clamp(1.05rem, 4.5vw, 1.3rem);
   color: var(--navy);
@@ -466,7 +468,7 @@ body {
   justify-content: center;
   background: var(--mist);
   color: var(--slate);
-  font-family: var(--font-script);
+  font-family: var(--font-lavishly-yours);
   font-size: 2rem;
   overflow: hidden;
 }
@@ -476,12 +478,13 @@ body {
   object-fit: cover;
 }
 .couple-name {
-  font-family: var(--font-display);
+  font-family: var(--font-kalam);
   color: var(--navy);
   font-size: 1.15rem;
   margin: 0.2rem 0 0.1rem;
 }
 .couple-parents {
+  font-family: var(--font-kalam);
   font-size: 0.85rem;
   color: var(--ink);
   opacity: 0.75;
@@ -511,7 +514,7 @@ body {
   margin-bottom: 0.6rem;
 }
 .event-title {
-  font-family: var(--font-display);
+  font-family: var(--font-poppins);
   color: var(--navy);
   font-size: 1.2rem;
   margin-bottom: 0.6rem;
@@ -526,6 +529,7 @@ body {
   min-width: 72px;
   color: var(--slate);
   font-weight: 500;
+  font-family: var(--font-poppins);
 }
 
 .btn-romantic {
